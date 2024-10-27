@@ -5,7 +5,7 @@ USE vortex;
 
 
 CREATE TABLE Usuario (
-    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(45) NOT NULL,
     senha VARCHAR(45) NOT NULL
 );
