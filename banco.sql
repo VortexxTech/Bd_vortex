@@ -6,6 +6,7 @@ USE vortex;
 
 CREATE TABLE Usuario (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome varchar(45) NOT NULL,
     email VARCHAR(45) NOT NULL,
     senha VARCHAR(45) NOT NULL
 );
@@ -18,9 +19,9 @@ CREATE TABLE Cargo (
 CREATE TABLE Funcionario (
     cpf INT PRIMARY KEY,
     nomeCompleto VARCHAR(45) NOT NULL,
-    Usuario_idUsuario INT,
+    Usuario_id_usuario INT,
     Cargo_idCargo INT,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario),
+    FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario(id_usuario),
     FOREIGN KEY (Cargo_idCargo) REFERENCES Cargo(idCargo)
 );
 
@@ -60,9 +61,9 @@ CREATE TABLE Localidade (
 CREATE TABLE Simulacao (
     idSimulacao INT PRIMARY KEY AUTO_INCREMENT,
     data_da_simulacao DATE NOT NULL,
-    Usuario_idUsuario INT,
+    Usuario_id_usuario INT,
     localidade_idlocalidade INT,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario),
+    FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario(id_usuario),
     FOREIGN KEY (localidade_idlocalidade) REFERENCES Localidade(idlocalidade)
 );
 
