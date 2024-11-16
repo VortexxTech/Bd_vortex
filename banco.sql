@@ -1,73 +1,65 @@
+CREATE DATABASE vortex2;
+USE vortex2;
 
-
-
-USE vortex;
 
 
 CREATE TABLE Usuario (
-    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(45) NOT NULL,
-    email VARCHAR(45) NOT NULL,
-    senha VARCHAR(45) NOT NULL
-);
-
-CREATE TABLE Cargo (
-    idCargo INT PRIMARY KEY AUTO_INCREMENT,
-    cargo VARCHAR(45) NOT NULL
-);
-
-CREATE TABLE Funcionario (
-    cpf INT PRIMARY KEY,
-    nomeCompleto VARCHAR(45) NOT NULL,
-    Usuario_id_usuario INT,
-    Cargo_idCargo INT,
-    FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario(id_usuario),
-    FOREIGN KEY (Cargo_idCargo) REFERENCES Cargo(idCargo)
+    id_Usuario INT PRIMARY KEY,
+    nome VARCHAR(45),
+    email VARCHAR(45),
+    senha VARCHAR(45)
 );
 
 
 CREATE TABLE Empresa (
-    idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    razaoSocial VARCHAR(45) NOT NULL,
-    cnpj CHAR(18) NOT NULL,
-    endereco VARCHAR(45),
-    Funcionario_cpf INT,
-    FOREIGN KEY (Funcionario_cpf) REFERENCES Funcionario(cpf)
+    id_Empresa INT PRIMARY KEY,
+    nome VARCHAR(45),
+    cnpj VARCHAR(45),
+    cep VARCHAR(45),
+    cidade VARCHAR(45),
+    bairro VARCHAR(45),
+    numero VARCHAR(45)
 );
 
 
-
-CREATE TABLE Custo (
-    idCusto INT PRIMARY KEY AUTO_INCREMENT,
-    custo_por_m2 DECIMAL(10, 2),
-    variacao_custo_medio DECIMAL(10, 2),
-    variacao_anual DECIMAL(10, 2),
-    variacao_mensal DECIMAL(10, 2)
-);
-
-CREATE TABLE Localidade (
-    idlocalidade INT PRIMARY KEY AUTO_INCREMENT,
-    zona VARCHAR(45) NOT NULL,
-    bairro VARCHAR(45) NOT NULL,
-    Custo_idCusto INT,
-    FOREIGN KEY (Custo_idCusto) REFERENCES Custo(idCusto)
+CREATE TABLE Funcionario (
+    id_Funcionario INT PRIMARY KEY,
+    cpf VARCHAR(45),
+    cargo VARCHAR(45),
+    fkUsuario INT,
+    fkGerente INT,
+    fkEmpresa INT,
+    FOREIGN KEY (fkUsuario) REFERENCES Usuarios(idUsuarios),
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    FOREIGN KEY (fkGerente) REFERENCES Funcionario(idFuncionario)
 );
 
 
-
-
-
-
-CREATE TABLE Simulacao (
-    idSimulacao INT PRIMARY KEY AUTO_INCREMENT,
-    data_da_simulacao DATE NOT NULL,
-    Usuario_id_usuario INT,
-    localidade_idlocalidade INT,
-    FOREIGN KEY (Usuario_id_usuario) REFERENCES Usuario(id_usuario),
-    FOREIGN KEY (localidade_idlocalidade) REFERENCES Localidade(idlocalidade)
+CREATE TABLE DadosInseridos (
+    id_DadosInseridos INT PRIMARY KEY,
+    zona VARCHAR(45),
+    bairro VARCHAR(45),
+    cidade VARCHAR(45),
+    densidade VARCHAR(45),
+    valorM2 VARCHAR(45),
+    dtInsercao VARCHAR(45),
+    idh VARCHAR(45),
+    Funcionarios_idFuncionario INT,
+    FOREIGN KEY (Funcionarios_idFuncionario) REFERENCES Funcionario(idFuncionario)
 );
 
 
+CREATE TABLE Prompt (
+    id_Prompt INT PRIMARY KEY,
+    Descricao VARCHAR(45),
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
+);
 
-
-
+CREATE TABLE ExecucaoPrompt (
+    id_ExecucaoPrompt INT PRIMARY KEY,
+    resposta VARCHAR(45),
+    dataHora VARCHAR(45),
+    prompt_idPrompt INT,
+    FOREIGN KEY (prompt_idPrompt) REFERENCES Prompt(idPrompt)
+);
