@@ -1,10 +1,10 @@
 CREATE DATABASE vortex2;
 USE vortex2;
 
-
+DROP DATABASE vortex2;
 
 CREATE TABLE Usuario (
-    id_Usuario INT PRIMARY KEY,
+    idUsuario INT PRIMARY KEY,
     nome VARCHAR(45),
     email VARCHAR(45),
     senha VARCHAR(45)
@@ -12,7 +12,7 @@ CREATE TABLE Usuario (
 
 
 CREATE TABLE Empresa (
-    id_Empresa INT PRIMARY KEY,
+    idEmpresa INT PRIMARY KEY,
     nome VARCHAR(45),
     cnpj VARCHAR(45),
     cep VARCHAR(45),
@@ -23,13 +23,13 @@ CREATE TABLE Empresa (
 
 
 CREATE TABLE Funcionario (
-    id_Funcionario INT PRIMARY KEY,
+    idFuncionario INT PRIMARY KEY,
     cpf VARCHAR(45),
     cargo VARCHAR(45),
     fkUsuario INT,
     fkGerente INT,
     fkEmpresa INT,
-    FOREIGN KEY (fkUsuario) REFERENCES Usuarios(idUsuarios),
+    FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
     FOREIGN KEY (fkGerente) REFERENCES Funcionario(idFuncionario)
 );
@@ -50,7 +50,7 @@ CREATE TABLE DadosInseridos (
 
 
 CREATE TABLE Prompt (
-    id_Prompt INT PRIMARY KEY,
+    idPrompt INT PRIMARY KEY,
     Descricao VARCHAR(45),
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa)
