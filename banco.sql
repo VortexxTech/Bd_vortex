@@ -16,7 +16,8 @@ CREATE TABLE Empresa (
     cep VARCHAR(45),
     cidade VARCHAR(45),
     bairro VARCHAR(45),
-    numero VARCHAR(45)
+    numero VARCHAR(45),
+    senha VARCHAR(45)
 );
 
 CREATE TABLE Funcionario (
@@ -69,8 +70,8 @@ VALUES
 -- Inserindo dados em Empresa
 INSERT INTO Empresa (idEmpresa, nome, cnpj, cep, cidade, bairro, numero)
 VALUES 
-(1, 'Tech Solutions', '12345678901234', '12345-678', 'São Paulo', 'Centro', '100'),
-(2, 'InovaTech', '98765432109876', '87654-321', 'São Paulo', 'Jardins', '200');
+(1, 'Tech Solutions', '12345678901234', '12345-678', 'São Paulo', 'Centro', '100', 'Tech@123'),
+(2, 'InovaTech', '98765432109876', '87654-321', 'São Paulo', 'Jardins', '200', 'Inova@123');
 
 -- Inserindo dados em Funcionario
 INSERT INTO Funcionario (idFuncionario, cpf, cargo, fkUsuario, fkGerente, fkEmpresa)
