@@ -40,10 +40,8 @@ CREATE TABLE DadosInseridos (
     valorM2 DECIMAL(10,2),
     dtInsercao DATE,
     idh VARCHAR(45),
-    Funcionarios_idFuncionario INT,
     rendaPerCapita DECIMAL(10,2),
-    densidadeDemografica DECIMAL(10,2),
-    FOREIGN KEY (Funcionarios_idFuncionario) REFERENCES Funcionario(idFuncionario)
+    densidadeDemografica DECIMAL(10,2)
 );
 
 CREATE TABLE Prompt (
