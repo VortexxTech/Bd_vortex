@@ -35,14 +35,15 @@ CREATE TABLE Funcionario (
 
 CREATE TABLE DadosInseridos (
     id_DadosInseridos INT PRIMARY KEY AUTO_INCREMENT,
-    zona VARCHAR(45),
     bairro VARCHAR(45),
-    cidade VARCHAR(45),
+    zona VARCHAR(45),
     valorM2 DECIMAL(10,2),
-    dtInsercao DATE,
+    variacaoPrecoM2 DECIMAL(10,2),
+    variacaoAnualPrecoM2 DECIMAL(10,2),
+    variacaoMensalPrecoM2 DECIMAL(10,2),
     idh VARCHAR(45),
-    rendaPerCapita DECIMAL(10,2),
-    densidadeDemografica DECIMAL(10,2)
+    densidadeDemografica DECIMAL(10,2),
+    dtInsercao DATE
 );
 
 CREATE TABLE Prompt (
