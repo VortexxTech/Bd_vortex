@@ -37,7 +37,7 @@ CREATE TABLE DadosInseridos (
     id_DadosInseridos INT PRIMARY KEY AUTO_INCREMENT,
     bairro VARCHAR(100),
     zona VARCHAR(45),
-    valorM2 DECIMAL(10,2),
+    valorM2 FLOAT,
     variacaoPrecoM2 DECIMAL(10,2),
     variacaoAnualPrecoM2 DECIMAL(10,2),
     variacaoMensalPrecoM2 DECIMAL(10,2),
