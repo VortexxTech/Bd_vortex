@@ -87,3 +87,6 @@ INSERT INTO ExecucaoPrompt (id_ExecucaoPrompt, resposta, dataHora, prompt_idProm
 (1, 'Execução bem-sucedida', '2024-11-01 10:00:00', 1),
 (2, 'Dados processados', '2024-11-02 15:30:00', 2);
 
+ALTER TABLE Usuario 
+ADD COLUMN fkEmpresa INT,
+ADD CONSTRAINT fk_usuario_empresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa);
